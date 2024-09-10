@@ -139,7 +139,7 @@ def p0 : PLExpr := itsRaining ∧ sprinklerOn
 /-!
 The sprinler's on and it's raining.
 -/
-def p1  : PLExpr := sorry
+def p1  : PLExpr := sprinklerOn ∧ itsRaining
 
 /-!
 If it's raining, then if the sprinkler's on, then it's
@@ -148,32 +148,32 @@ then that) expressions in natural language are written
 formally in propositional and predicate logic using the
 implication (implies) operator, imp (⇒ in our notation).
 -/
-def p2  : PLExpr := sorry
+def p2  : PLExpr := itsRaining ⇒ sprinklerOn ⇒ (itsRaining ∧ sprinklerOn)
 
 /-!
 If it's raining and the sprinkler's running, then it's raining.
 -/
-def p3  : PLExpr := sorry
+def p3  : PLExpr := (itsRaining ∧ sprinklerOn) ⇒ itsRaining
 
 /-!
 If it's raining ,then it's raining or the sprinkler's running.
 -/
-def p4  : PLExpr := sorry
+def p4  : PLExpr := itsRaining ⇒ (itsRaining ∨ sprinklerOn)
 
 /-!
 If the sprinkler's running, it's raining or the sprinkler's running.
 -/
-def p5  : PLExpr := sorry
+def p5  : PLExpr := sprinklerOn ⇒ (itsRaining ∨ sprinklerOn)
 
 /-!
 Whenever it's raining the streets are wet.
 -/
-def p6  : PLExpr := sorry
+def p6  : PLExpr := itsRaining ⇒ streetWet
 
 /-!
 Whenever the sprinkler's running the streets are wet.
 -/
-def p7  : PLExpr := sorry
+def p7  : PLExpr := sprinklerOn ⇒ streetWet
 
 /-!
 If (a) it's raining or the sprinkler's running, then (b) if
@@ -181,31 +181,31 @@ whenever it's raining then the streets are wet, then (c) if
 whenever the sprinkler's running then the streets are wet, then
 _________. What is the conclusion? Write the expression in PL.
 -/
-def p8  : PLExpr := sorry
+def p8  : PLExpr := (itsRaining ∨ sprinklerOn) ⇒ (itsRaining ⇒ streetWet) ⇒ (sprinklerOn ⇒ streetWet) ⇒ streetWet
 
 /-!
 If whenever it's raining, the streets are wet, then whenever the
 streets are wet it's raining.
 -/
-def p9  : PLExpr := sorry
+def p9  : PLExpr := (itsRaining ⇒ streetWet) ⇒ (streetWet ⇒ itsRaining)
 
 
 /-!
 If whever it's raining then bottom, then it's not raining.
 -/
-def p10  : PLExpr := sorry
+def p10  : PLExpr := (itsRaining ⇒ ⊥) ⇒ ¬itsRaining
 
 /-!
 If it's raining or the sprinkler's running then if it's
 not raining then the sprinkler's running.
 -/
-def p11 : PLExpr := sorry
+def p11 : PLExpr := itsRaining ∨ sprinklerOn ⇒ ¬itsRaining ⇒ sprinklerOn
 
 /-!
 If whenever it's raining the streets are wet, then whenever the
 streets are not wet, it must not be raining.
 -/
-def p12 : PLExpr := sorry
+def p12 : PLExpr := (itsRaining ⇒ streetWet) ⇒ (¬streetWet ⇒ ¬itsRaining)
 
 /-!
 -/
